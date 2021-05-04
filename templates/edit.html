@@ -1,0 +1,78 @@
+{% extends "layout.html" %}
+{% block body %}
+<!-- Page Header-->
+<header class="masthead" style="background-image: url('static/img/home-bg.jpg')">
+
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto">
+                <div class="site-heading">
+                    <h1>Admin Panel</h1>
+                    <span class="subheading">Manage your post and change them</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- Main Content-->
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+
+            <h1>Basic Actions</h1>
+
+            <a href="/dashboard/"><button class="btn btn-primary">Dashboard Home</button></a>
+            <a href="/logout"><button class="btn btn-primary">Logout</button></a>
+            <hr>
+<h1>Add/Edit Post</h1>
+            <form id="contactForm" name="sentMessage" action="/edit/{{sno}}" method="post" novalidate>
+                <div class="control-group">
+                    <div class="form-group floating-label-form-group controls">
+                        <label>Title</label>
+                        <input class="form-control" id="title" name='title' type="text" placeholder="Title" required
+                            data-validation-required-message="Please enter your name." value="{{post.title}}"/>
+                        <p class="help-block text-danger"></p>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <div class="form-group floating-label-form-group controls">
+                        <label>Tag line</label>
+                        <input class="form-control" id="tline" name='tline' type="text" placeholder="Tag Line"
+                            required data-validation-required-message="Please enter your email address." value="{{post.tagline}}" />
+                        <p class="help-block text-danger"></p>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <div class="form-group col-xs-12 floating-label-form-group controls">
+                        <label>Slug</label>
+                        <input class="form-control" id="slug" name='slug' type="text" placeholder="Slug" required
+                            data-validation-required-message="Please enter your phone number." value="{{post.slug}}" />
+                        <p class="help-block text-danger"></p>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <div class="form-group floating-label-form-group controls">
+                        <label>Content</label>
+                        <textarea class="form-control" id="content" name='content' rows="5" placeholder="Content"
+                            required data-validation-required-message="Please enter a message.">{{post.content}}</textarea>
+                        <p class="help-block text-danger"></p>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <div class="form-group floating-label-form-group controls">
+                        <label>Image File</label>
+                        <input class="form-control" id="img_file" name='img_file' rows="5" placeholder="Image FileName"
+                            required data-validation-required-message="Please enter a message." value="{{post.img_file}}">
+                        <p class="help-block text-danger"></p>
+                    </div>
+                </div>
+                <br />
+                <div id="success"></div>
+                <button class="btn btn-primary" id="sendMessageButton" type="submit">Submit</button>
+            </form>
+
+        </div>
+    </div>
+</div>
+{% endblock %}
